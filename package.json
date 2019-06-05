@@ -1,0 +1,29 @@
+{
+  "name": "expertise-visualizer",
+  "version": "1.0.0",
+  "description": "Research project for visualizing and helping users find experts in an organization for EECS 496: Interactive Data Visualization, Assignment 3",
+  "main": "./bin/www",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kapil1garg/eecs-496-info-viz-a4.git"
+  },
+  "keywords": [
+    "d3"
+  ],
+  "author": "Kapil Garg",
+  "contributors": [
+    "Kapil Garg (https://kgarg.com/)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kapil1garg/eecs-496-info-viz-a4/issues"
+  },
+  "homepage": "https://github.com/kapil1garg/eecs-496-info-viz-a4#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "serve-favicon": "^2.5.0"
+  }
+}
