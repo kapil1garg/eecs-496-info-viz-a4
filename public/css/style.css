@@ -1,0 +1,81 @@
+body, html{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    margin:0;
+    padding:0;
+    width: 100%;
+    height:100%;
+}
+
+.container {
+    margin-bottom: 2rem;
+}
+
+.main-row {
+    min-height: 100vh;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.standard-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+div.tooltip {
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    text-align: center;
+    padding: 2px;
+    font-size: 11px;
+    color: white;
+    border: 0;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.wine-information {
+    visibility: hidden;
+}
+
+.slider-select {
+    margin-bottom: 2rem;
+}
+
+.slider {
+    margin-left: 10px;
+    width: 100%;
+}
+
+.slider-div {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.slider-text {
+    border:0;
+}
+
+h4 {
+    font-size: 1.3rem;
+}
+
+h1.filters-header {
+    background: dodgerblue;
+    text-align: center;
+}
+
+h1.helper-header {
+    background: cornflowerblue;
+    text-align: center;
+}
+
+div.filters {
+    background: lightblue;
+}
+
+.form-check {
+    padding-left:2.5rem;
+}

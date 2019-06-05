@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!--  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>A3 - Wine Visualizer</title>
+
+    <!-- Bootstrap core JavaScript -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i" rel="stylesheet">
+</head>
+
+<body>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+
+<!--<script type="text/javascript" src="js/priceScoreScatter.js"></script>-->
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<!-- Header and Description -->
+<div class="container-fluid">
+    <div class="row main-row">
+        <div class="col-3 no-gutter no-padding filters">
+            <h1 class="filters-header">Find a Helper</h1>
+
+            <!-- Select Main Domain -->
+            <div class="form-group standard-padding">
+                <label for="exampleFormControlSelect1">Select a Domain</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Python</option>
+                    <option>JavaScript</option>
+                    <option>iOS</option>
+                </select>
+            </div>
+
+            <!-- Select Subtopic -->
+            <div class="form-group standard-padding">
+                <label for="exampleFormControlSelect1">Select a Subtopic</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Visualization Frameworks</option>
+                    <option>Model-View-Controller (MVC) Frameworks</option>
+                </select>
+            </div>
+
+            <!-- Select Specific Frameworks -->
+            <div class="standard-padding">
+                <h5>Select Specific Frameworks</h5>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    D3.js
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    Vega-Lite
+                </label>
+            </div>
+
+            <!-- Minimum Expertise Level -->
+            <div class="standard-padding">
+                <h5>Set Minimum Expertise Level</h5>
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+            </div>
+
+            <!-- Calendar Select -->
+            <div class="standard-padding">
+                <h5>Schedule</h5>
+            </div>
+        </div>
+        <div class="col-9 no-gutter no-padding">
+            <h1 class="helper-header">Available Helpers</h1>
+        </div>
+    </div>
+</div>
+</body>
+</html>
