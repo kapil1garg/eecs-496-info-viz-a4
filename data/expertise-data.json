@@ -1,0 +1,250 @@
+[
+    {
+        "name": "Joseph Gonzalez",
+        "imageFile": "images/people/joseph-gonzalez.jpg",
+        "title": "Junior Full-Stack Dev",
+        "availability": [
+            "2019-06-01",
+            "2019-06-02",
+            "2019-06-03",
+            "2019-06-04",
+            "2019-06-05",
+            "2019-06-06",
+            "2019-06-07",
+            "2019-06-08",
+            "2019-06-09",
+            "2019-06-10",
+            "2019-06-11",
+            "2019-06-12",
+            "2019-06-13",
+            "2019-06-14",
+            "2019-06-15",
+            "2019-06-16",
+            "2019-06-17",
+            "2019-06-18",
+            "2019-06-19",
+            "2019-06-20",
+            "2019-06-21",
+            "2019-06-22",
+            "2019-06-23",
+            "2019-06-24",
+            "2019-06-25",
+            "2019-06-26",
+            "2019-06-27",
+            "2019-06-28",
+            "2019-06-29",
+            "2019-06-30"
+        ],
+        "expertise": {
+            "JavaScript": {
+                "Visualization Frameworks": {
+                    "D3.js": 1,
+                    "Vega Lite": 0,
+                    "ThreeJS": 1,
+                    "React Vis": 0
+                },
+                "Model-View-Controller (MVC) Frameworks": {
+                    "jQuery": 1,
+                    "AngularJS": 1,
+                    "EmberJS": 1,
+                    "MeteorJS": 2,
+                    "ReactJS": 3
+                }
+            },
+            "Python": {
+                "Data Analysis and Modeling": {
+                    "Pandas": 1,
+                    "Numpy": 1,
+                    "Tensorflow": 1,
+                    "Scipy": 1
+                },
+                "Backend Frameworks": {
+                    "Flask": 3,
+                    "Django": 3,
+                    "Tornado": 3
+                }
+            }
+        }
+    },
+    {
+        "name": "Jennifer Smith",
+        "imageFile": "images/people/jennifer-smith.jpg",
+        "title": "Senior Front-End Dev",
+        "availability": [
+            "2019-06-01",
+            "2019-06-02",
+            "2019-06-03",
+            "2019-06-04",
+            "2019-06-05",
+            "2019-06-06",
+            "2019-06-07",
+            "2019-06-08",
+            "2019-06-09",
+            "2019-06-10",
+            "2019-06-11",
+            "2019-06-12",
+            "2019-06-13",
+            "2019-06-14",
+            "2019-06-15",
+            "2019-06-16",
+            "2019-06-17",
+            "2019-06-18",
+            "2019-06-19",
+            "2019-06-20",
+            "2019-06-21",
+            "2019-06-22",
+            "2019-06-23",
+            "2019-06-24",
+            "2019-06-25",
+            "2019-06-26",
+            "2019-06-27",
+            "2019-06-28",
+            "2019-06-29",
+            "2019-06-30"
+        ],
+        "expertise": {
+            "JavaScript": {
+                "Visualization Frameworks": {
+                    "D3.js": 4,
+                    "Vega Lite": 3,
+                    "ThreeJS": 3,
+                    "React Vis": 5
+                },
+                "Model-View-Controller (MVC) Frameworks": {
+                    "jQuery": 5,
+                    "AngularJS": 4,
+                    "EmberJS": 4,
+                    "MeteorJS": 3,
+                    "ReactJS": 3
+                }
+            },
+            "Python": {
+                "Data Analysis and Modeling": {
+                    "Pandas": 0,
+                    "Numpy": 0,
+                    "Tensorflow": 0,
+                    "Scipy": 0
+                },
+                "Backend Frameworks": {
+                    "Flask": 2,
+                    "Django": 1,
+                    "Tornado": 1
+                }
+            }
+        }
+    },
+    {
+        "name": "Prince Akachi",
+        "imageFile": "images/people/prince-akachi.jpg",
+        "title": "Senior Data Scientist",
+        "availability": [
+            "2019-06-01",
+            "2019-06-02",
+            "2019-06-03",
+            "2019-06-04",
+            "2019-06-05",
+            "2019-06-06",
+            "2019-06-07",
+            "2019-06-08",
+            "2019-06-09",
+            "2019-06-10",
+            "2019-06-11",
+            "2019-06-12",
+            "2019-06-13",
+            "2019-06-14",
+            "2019-06-15",
+            "2019-06-16",
+            "2019-06-17",
+            "2019-06-18",
+            "2019-06-19",
+            "2019-06-20",
+            "2019-06-21",
+            "2019-06-22",
+            "2019-06-23",
+            "2019-06-24",
+            "2019-06-25",
+            "2019-06-26",
+            "2019-06-27",
+            "2019-06-28",
+            "2019-06-29",
+            "2019-06-30"
+        ],
+        "expertise": {
+            "JavaScript": {
+                "Visualization Frameworks": {
+                    "D3.js": 5,
+                    "Vega Lite": 5,
+                    "ThreeJS": 0,
+                    "React Vis": 0
+                },
+                "Model-View-Controller (MVC) Frameworks": {
+                    "jQuery": 5,
+                    "AngularJS": 0,
+                    "EmberJS": 0,
+                    "MeteorJS": 0,
+                    "ReactJS": 0
+                }
+            },
+            "Python": {
+                "Data Analysis and Modeling": {
+                    "Pandas": 4,
+                    "Numpy": 4,
+                    "Tensorflow": 5,
+                    "Scipy": 5
+                },
+                "Backend Frameworks": {
+                    "Flask": 0,
+                    "Django": 0,
+                    "Tornado": 0
+                }
+            }
+        }
+    },
+    {
+        "name": "Chase Fade",
+        "imageFile": "images/people/chase-fade.jpg",
+        "title": "Senior Full-Stack Dev",
+        "availability": [
+            "2019-06-21",
+            "2019-06-22",
+            "2019-06-23",
+            "2019-06-24",
+            "2019-06-25",
+            "2019-06-26",
+            "2019-06-27",
+            "2019-06-28",
+            "2019-06-29",
+            "2019-06-30"
+        ],
+        "expertise": {
+            "JavaScript": {
+                "Visualization Frameworks": {
+                    "D3.js": 3,
+                    "Vega Lite": 3,
+                    "ThreeJS": 2,
+                    "React Vis": 3
+                },
+                "Model-View-Controller (MVC) Frameworks": {
+                    "jQuery": 5,
+                    "AngularJS": 5,
+                    "EmberJS": 4,
+                    "MeteorJS": 4,
+                    "ReactJS": 5
+                }
+            },
+            "Python": {
+                "Data Analysis and Modeling": {
+                    "Pandas": 0,
+                    "Numpy": 0,
+                    "Tensorflow": 0,
+                    "Scipy": 0
+                },
+                "Backend Frameworks": {
+                    "Flask": 5,
+                    "Django": 5,
+                    "Tornado": 4
+                }
+            }
+        }
+    }
+]
