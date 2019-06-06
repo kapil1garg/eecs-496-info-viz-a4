@@ -1,117 +1,120 @@
 $(function() {
-  const data1 = [{
-    "name": "Apples",
-    "value": 1,
-  },
+  const data1 = [
     {
-      "name": "Bananas",
+    "name": "d3.js",
+    "value": 1,
+    },
+    {
+      "name": "Vega-Lite",
       "value": 3,
     },
     {
-      "name": "Grapes",
+      "name": "React",
       "value": 0,
     },
     {
-      "name": "Lemons",
+      "name": "Angular",
       "value": 5,
     },
     {
-      "name": "Limes",
+      "name": "Vue",
       "value": 4,
     },
     {
-      "name": "Oranges",
+      "name": "Blaze",
       "value": 4,
     },
     {
-      "name": "Pears",
+      "name": "Node.js",
       "value": 2,
     }];
 
-  const data2 = [{
-    "name": "Apples",
-    "value": 1,
-  },
+  const data2 = [
     {
-      "name": "Bananas",
+    "name": "d3.js",
+    "value": 1,
+    },
+    {
+      "name": "Vega-Lite",
       "value": 1,
     },
     {
-      "name": "Grapes",
+      "name": "React",
       "value": 2,
     },
     {
-      "name": "Lemons",
+      "name": "Angular",
       "value": 5,
     },
     {
-      "name": "Limes",
+      "name": "Vue",
       "value": 2,
     },
     {
-      "name": "Oranges",
+      "name": "Blaze",
       "value": 4,
     },
     {
-      "name": "Pears",
+      "name": "Node.js",
       "value": 2,
     }];
 
-  const data3 = [{
-    "name": "Apples",
-    "value": 1,
-  },
+  const data3 = [
     {
-      "name": "Bananas",
+    "name": "d3.js",
+    "value": 1,
+    },
+    {
+      "name": "Vega-Lite",
       "value": 2,
     },
     {
-      "name": "Grapes",
+      "name": "React",
       "value": 0,
     },
     {
-      "name": "Lemons",
+      "name": "Angular",
       "value": 5,
     },
     {
-      "name": "Limes",
+      "name": "Vue",
       "value": 5,
     },
     {
-      "name": "Oranges",
+      "name": "Blaze",
       "value": 1,
     },
     {
-      "name": "Pears",
+      "name": "Node.js",
       "value": 1,
     }];
 
   const data4 = [{
-    "name": "Apples",
+    "name": "d3.js",
     "value": 1,
   },
     {
-      "name": "Bananas",
+      "name": "Vega-Lite",
       "value": 2,
     },
     {
-      "name": "Grapes",
+      "name": "React",
       "value": 0,
     },
     {
-      "name": "Lemons",
+      "name": "Angular",
       "value": 5,
     },
     {
-      "name": "Limes",
+      "name": "Vue",
       "value": 5,
     },
     {
-      "name": "Oranges",
+      "name": "Blaze",
       "value": 1,
     },
     {
-      "name": "Pears",
+      "name": "Node.js",
       "value": 1,
     }];
 

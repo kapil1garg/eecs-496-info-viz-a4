@@ -5,6 +5,9 @@ class BarPlot {
     this.data = data;
 
     // setup internal variables needed across functions
+    this.height = null;
+    this.width = null;
+
     this.svg = null;
     this.tooltip = null;
     this.xScale = null;
@@ -19,11 +22,14 @@ class BarPlot {
     const destElement = d3.select(this.targetEle);
 
     // setup plotting area
-    const margin = { top: 30, right: 50, bottom: 50, left: 50 };
+    const margin = { top: 30, right: 75, bottom: 50, left: 75 };
     const h = $plotDiv.innerHeight() - margin.top - margin.bottom;
     const w = $plotDiv.innerWidth() - margin.left - margin.right;
 
-    // scales (x = number points, y = price)
+    this.height = h;
+    this.width = w;
+
+    // scales (x = knowledge level, y = skill)
     this.xScale = d3.scaleLinear()
         .domain([0, 5])
         .range([0, w]);
@@ -33,8 +39,14 @@ class BarPlot {
       .range([margin.top, h])
       .padding(0.1);
 
+    // color
+    this.bgColor = d3.scaleOrdinal()
+      .domain(this.data.map(datum => datum.name))
+      .range(d3.schemeCategory10);
+
     // x-axis
     const xAxis = d3.axisBottom(this.xScale);
+    xAxis.tickValues([0, 1, 2, 3, 4, 5]).tickFormat(d3.format('.0f'));
 
     // y-axis
     const yAxis = d3.axisLeft(this.yScale);
@@ -84,13 +96,15 @@ class BarPlot {
 
     bars.enter()
       .append('rect')
-      .attr('class', 'bar')
-      .attr('y', d => self.yScale(d.name) )
-      .attr('height', self.yScale.bandwidth())
-      .attr('x', 0)
-      .attr('width', function (d) {
-        return self.xScale(d.value);
-      });
+        .attr('class', 'bar')
+        .attr('y', d => self.yScale(d.name) )
+        .attr('height', self.yScale.bandwidth())
+        .attr('width', 0)
+        .style('fill', d => self.bgColor(d.name))
+      .transition()
+        .duration(800)
+        .attr('width', d => self.xScale(d.value))
+        .delay((d, i) => i * 100);
 
     bars.append('text')
       .attr('class', 'label')
