@@ -2,7 +2,10 @@ class BarPlot {
   constructor(targetDiv, data) {
     // setup data needed from caller
     this.targetEle = targetDiv;
-    this.data = data;
+    this.data = data.skills;
+    this.isAvailable = data.isAvailable;
+
+    d3.select(this.targetEle).selectAll("*").remove();
 
     // setup internal variables needed across functions
     this.height = null;
@@ -13,11 +16,6 @@ class BarPlot {
     this.xScale = null;
     this.yScale = null;
     this.bgColor = null;
-  }
-
-  resetPlot(data) {
-    this.data = data;
-    d3.select(this.targetEle).selectAll("*").remove();
   }
 
   setupPlot() {
@@ -106,7 +104,7 @@ class BarPlot {
   draw(data) {
     let self = this;
     let bars = this.svg.selectAll(".bar")
-      .data(data);
+      .data(data.skills);
 
     bars.enter()
       .append('rect')
@@ -116,20 +114,21 @@ class BarPlot {
         .attr('width', 0)
         .style('fill', d => self.bgColor(d.name))
       .merge(bars)
-      .on('mouseover', function(selectedBar) {
+      .on('mouseover', selectedBar => {
         d3.selectAll('.bar')
           .style('opacity', 0.25)
           .filter(d => d.name === selectedBar.name)
           .style('opacity', 1);
-      }).on('mouseout', function() {
-        console.log(self.data); // TODO: use parameter in data about availability to reset opacity
+      }).on('mouseout', () => {
+        // TODO: use parameter in data about availability to reset opacity THIS BREAKS
         d3.selectAll('.bar')
-          .style('opacity', 1);
+          .style('opacity', () => self.isAvailable ? 1.0 : 0.25);
       })
       .transition()
         .duration(800)
         .attr('width', d => self.xScale(d.value))
-        .delay((d, i) => i * 100);
+        .delay((d, i) => i * 100)
+      .style('opacity', () => data.isAvailable ? 1.0 : 0.25);
 
     // add labels to each bar
     // this.svg.append('g')

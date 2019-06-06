@@ -16,6 +16,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -27,7 +31,7 @@
 <script src="https://d3js.org/d3.v5.min.js"></script>
 
 <script type="text/javascript" src="js/app.js"></script>
-<script type="text/javascript" src="js/data-model.js"></script>
+<script type="text/javascript" src="js/renderer.js"></script>
 <script type="text/javascript" src="js/barchart.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -39,98 +43,90 @@
             <h1 class="filters-header">Find a Helper</h1>
 
             <!-- Select Main Domain -->
-            <div class="form-group standard-padding">
-                <label for="exampleFormControlSelect1">Select a Domain</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option></option>
-                    <option>Python</option>
-                    <option>JavaScript</option>
-                    <option>iOS</option>
-                </select>
+            <div class="form-group standard-padding" id="domain-div">
+                <label for="domain">Select a Domain</label>
+                <select class="form-control" id="domain"></select>
             </div>
 
             <!-- Select Subtopic -->
-            <div class="form-group standard-padding">
-                <label for="exampleFormControlSelect1">Select a Subtopic</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                    <option>Visualization Frameworks</option>
-                    <option>Model-View-Controller (MVC) Frameworks</option>
-                </select>
+            <div class="form-group standard-padding" id="subtopic-div">
+                <label for="subtopic">Select a Subtopic</label>
+                <select class="form-control" id="subtopic"></select>
             </div>
 
-            <!-- Select Specific Frameworks -->
-            <div class="standard-padding">
-                <h5>Select Specific Frameworks</h5>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                    D3.js
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                    Vega-Lite
-                </label>
-            </div>
+            <hr>
 
-            <!-- Minimum Expertise Level -->
-            <div class="standard-padding">
-                <h5>Set Minimum Expertise Level</h5>
-                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
-            </div>
+            <!-- Specific Filters -->
+            <div id="specific-filters">
+                <!-- Select Specific Frameworks -->
+                <div class="standard-padding">
+                    <h6>What do you need help with?</h6>
+                    <div id="filter-frameworks"></div>
+                </div>
 
-            <!-- Calendar Select -->
-            <div class="standard-padding">
-                <h5>Schedule</h5>
+                <!-- Minimum Expertise Level -->
+<!--                <div class="standard-padding">-->
+<!--                    <h5>Set Minimum Expertise Level</h5>-->
+<!--                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">-->
+<!--                </div>-->
+
+                <br>
+                <!-- Calendar Select -->
+                <div class="standard-padding">
+                    <h6>When do you need help by?</h6>
+                    <div class="datepicker"></div>
+                </div>
             </div>
         </div>
+
         <div class="col-9 no-gutter no-padding">
             <h1 class="helper-header">Available Helpers</h1>
-            <div class="row standard-padding">
-                <div class="col-2 cn">
-                    <div class="profile">
-                        <img src="images/people/joseph-gonzalez.jpg" alt="joseph-avatar" class="circle-avatar">
-                        <h4>Joseph Gonzalez</h4>
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div style="text-align:center; height: 20vh" id="bar1"></div>
-                </div>
-            </div>
-            <div class="row standard-padding">
-                <div class="col-2 cn">
-                    <div class="profile">
-                        <img src="images/people/jennifer-smith.jpg" alt="joseph-avatar" class="circle-avatar">
-                        <h4>Jennifer Smith</h4>
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div style="text-align:center; height: 20vh" id="bar2"></div>
-                </div>
-            </div>
-            <div class="row standard-padding">
-                <div class="col-2 cn">
-                    <div class="profile">
-                        <img src="images/people/prince-akachi.jpg" alt="joseph-avatar" class="circle-avatar">
-                        <h4>Prince Akachi</h4>
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div style="text-align:center; height: 20vh" id="bar3"></div>
-                </div>
-            </div>
-            <div class="row standard-padding">
-                <div class="col-2 cn">
-                    <div class="profile" id="chase-profile">
-                        <img src="images/people/chase-fade.jpg" alt="joseph-avatar" class="circle-avatar">
-                        <h4>Chase Fade</h4>
-                    </div>
-                </div>
-                <div class="col-10">
-                    <div style="text-align:center; height: 20vh" id="bar4"></div>
-                </div>
+            <div id="helpers">
+<!--                <div class="row standard-padding">-->
+<!--                    <div class="col-2 cn">-->
+<!--                        <div class="profile">-->
+<!--                            <img src="images/people/joseph-gonzalez.jpg" alt="joseph-avatar" class="circle-avatar">-->
+<!--                            <h4>Joseph Gonzalez</h4>-->
+<!--                            <h5>Engineer</h5>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-10">-->
+<!--                        <div style="text-align:center; height: 20vh" id="bar1"></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="row standard-padding">-->
+<!--                    <div class="col-2 cn">-->
+<!--                        <div class="profile">-->
+<!--                            <img src="images/people/jennifer-smith.jpg" alt="joseph-avatar" class="circle-avatar">-->
+<!--                            <h4>Jennifer Smith</h4>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-10">-->
+<!--                        <div style="text-align:center; height: 20vh" id="bar2"></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="row standard-padding">-->
+<!--                    <div class="col-2 cn">-->
+<!--                        <div class="profile">-->
+<!--                            <img src="images/people/prince-akachi.jpg" alt="joseph-avatar" class="circle-avatar">-->
+<!--                            <h4>Prince Akachi</h4>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-10">-->
+<!--                        <div style="text-align:center; height: 20vh" id="bar3"></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="row standard-padding">-->
+<!--                    <div class="col-2 cn">-->
+<!--                        <div class="profile">-->
+<!--                            <img src="images/people/chase-fade.jpg" alt="joseph-avatar" class="circle-avatar">-->
+<!--                            <h4>Chase Fade</h4>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="col-10">-->
+<!--                        <div style="text-align:center; height: 20vh" id="bar4"></div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
     </div>

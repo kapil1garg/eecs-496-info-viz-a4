@@ -120,7 +120,7 @@
             },
             "Python": {
                 "Data Analysis and Modeling": {
-                    "Pandas": 0,
+                    "Pandas": 1,
                     "Numpy": 0,
                     "Tensorflow": 0,
                     "Scipy": 0
@@ -234,9 +234,9 @@
             },
             "Python": {
                 "Data Analysis and Modeling": {
-                    "Pandas": 0,
+                    "Pandas": 1,
                     "Numpy": 0,
-                    "Tensorflow": 0,
+                    "Tensorflow": 1,
                     "Scipy": 0
                 },
                 "Backend Frameworks": {
