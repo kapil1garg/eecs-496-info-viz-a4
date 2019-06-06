@@ -59,7 +59,6 @@ class Renderer {
     let index = 0;
     Object.keys(this.people).forEach(key => {
       // curr plot key
-      let currPlotId = `bar${ index }`;
       let plotId = key.replace(/\s/g, '');
 
       // create tile
@@ -200,7 +199,8 @@ class Renderer {
 
     // TODO: restrict this for demo purposes so that it doesn't break with pre-specified data
     $('.datepicker').on('changeDate', e => {
-      console.log(e)
+      this.filterVals.deadline = e.date.toISOString().split('T')[0];
+      this.updateVis();
     });
   }
 
@@ -226,6 +226,12 @@ class Renderer {
             isAvailable = false;
           }
         });
+      }
+
+      // determine availability by deadline
+      if ((this.filterVals.deadline !== undefined) &&
+          !(this.people[key].availability.has(this.filterVals.deadline))) {
+        isAvailable = false;
       }
 
       filteredPlotData[key] = {

@@ -48,7 +48,7 @@
                     "AngularJS": 1,
                     "EmberJS": 1,
                     "MeteorJS": 2,
-                    "ReactJS": 3
+                    "ReactJS": 0
                 }
             },
             "Python": {
@@ -115,7 +115,7 @@
                     "AngularJS": 4,
                     "EmberJS": 4,
                     "MeteorJS": 3,
-                    "ReactJS": 3
+                    "ReactJS": 0
                 }
             },
             "Python": {
