@@ -80,13 +80,6 @@ class BarPlot {
     this.svg.append('g')
       .attr('class', 'axis')
       .call(yAxis);
-
-    // this.svg.append('text') // y-axis Label
-    //   .attr('class','label')
-    //   .attr('x', 175)
-    //   .attr('y', -10)
-    //   .style('text-anchor','end')
-    //   .text('Price per Bottle (in $USD)');
   }
 
   draw(data) {
@@ -101,24 +94,48 @@ class BarPlot {
         .attr('height', self.yScale.bandwidth())
         .attr('width', 0)
         .style('fill', d => self.bgColor(d.name))
+      .on('mouseover', function(selectedBar) {
+        d3.selectAll('.bar')
+          .style('opacity', 0.25)
+          .filter(d => d.name === selectedBar.name)
+          .style('opacity', 1);
+      }).on('mouseout', function() {
+        console.log(self.data); // TODO: use parameter in data about availability to reset opacity
+        d3.selectAll('.bar')
+          .style('opacity', 1);
+      })
       .transition()
         .duration(800)
         .attr('width', d => self.xScale(d.value))
         .delay((d, i) => i * 100);
 
-    bars.append('text')
-      .attr('class', 'label')
-      // y position of the label is halfway down the bar
-      .attr('y', function (d) {
-        return self.yScale(d.name) + self.yScale.bandwidth() / 2 + 4;
-      })
-      // x position is 3 pixels to the right of the bar
-      .attr('x', function (d) {
-        return self.xScale(d.value) + 3;
-      })
-      .text(function (d) {
-        return d.value;
-      });
+    // add labels to each bar
+    this.svg.append("g")
+      .attr("fill", "white")
+      .attr("text-anchor", "end")
+      .selectAll("text")
+      .data(data)
+      .join("text")
+        .attr("x", d => this.xScale(d.value) - 4)
+        .attr("y", d => this.yScale(d.name) + this.yScale.bandwidth() / 2)
+        .attr("dy", "0.35em")
+        .text(d => {
+          switch (d.value) {
+            case 1:
+              return 'Novice';
+            case 2:
+              return 'Familiar';
+            case 3:
+              return 'Intermediate';
+            case 4:
+              return 'Experienced';
+            case 5:
+              return 'Expert';
+            case 0:
+            default:
+              return '';
+          }
+        });
 
     bars.exit().remove();
   }
