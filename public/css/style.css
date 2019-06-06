@@ -63,19 +63,41 @@ h4 {
 }
 
 h1.filters-header {
-    background: dodgerblue;
+    background: #0B4359;
     text-align: center;
+    color: white;
 }
 
 h1.helper-header {
-    background: cornflowerblue;
+    background: #898C3A;
     text-align: center;
+    color: white;
 }
 
 div.filters {
-    background: lightblue;
+    background: #4EBFAB;
 }
 
 .form-check {
     padding-left:2.5rem;
+}
+
+.cn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile {
+    text-align: center;
+}
+
+.circle-avatar {
+    border-radius: 50%;
+    height: 100px;
+    margin: 1rem;
+}
+
+#chase-profile {
+    opacity: 0.5;
 }

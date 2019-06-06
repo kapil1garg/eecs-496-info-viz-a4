@@ -59,10 +59,10 @@ class BarPlot {
 
     this.svg.append('text') // x-axis label
       .attr('class','label')
-      .attr('x', w)
-      .attr('y', h - 10)
+      .attr('x', w + 10)
+      .attr('y', h + margin.top)
       .style('text-anchor','end')
-      .text('Affinity');
+      .text('Knowledge (0: none; 5: expert)');
 
     // add y-axis
     this.svg.append('g')
