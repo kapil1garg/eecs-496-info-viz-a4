@@ -13,7 +13,11 @@ class BarPlot {
     this.xScale = null;
     this.yScale = null;
     this.bgColor = null;
-    this.txtColor = null;
+  }
+
+  resetPlot(data) {
+    this.data = data;
+    d3.select(this.targetEle).selectAll("*").remove();
   }
 
   setupPlot() {
@@ -45,8 +49,25 @@ class BarPlot {
       .range(d3.schemeCategory10);
 
     // x-axis
-    const xAxis = d3.axisBottom(this.xScale);
-    xAxis.tickValues([0, 1, 2, 3, 4, 5]).tickFormat(d3.format('.0f'));
+    const xAxis = d3.axisBottom(this.xScale)
+      .tickValues([0, 1, 2, 3, 4, 5])
+      .tickFormat(d => {
+        switch (d) {
+          case 1:
+            return 'Novice';
+          case 2:
+            return 'Familiar';
+          case 3:
+            return 'Intermediate';
+          case 4:
+            return 'Experienced';
+          case 5:
+            return 'Expert';
+          case 0:
+          default:
+            return '';
+        }
+      });
 
     // y-axis
     const yAxis = d3.axisLeft(this.yScale);
@@ -69,12 +90,12 @@ class BarPlot {
       .attr('class', 'axis')
       .call(xAxis);
 
-    this.svg.append('text') // x-axis label
-      .attr('class','label')
-      .attr('x', w + 10)
-      .attr('y', h + margin.top)
-      .style('text-anchor','end')
-      .text('Knowledge (0: none; 5: expert)');
+    // this.svg.append('text') // x-axis label
+    //   .attr('class','label')
+    //   .attr('x', w + 10)
+    //   .attr('y', h + margin.top)
+    //   .style('text-anchor','end')
+    //   .text('Knowledge (0: none; 5: expert)');
 
     // add y-axis
     this.svg.append('g')
@@ -94,6 +115,7 @@ class BarPlot {
         .attr('height', self.yScale.bandwidth())
         .attr('width', 0)
         .style('fill', d => self.bgColor(d.name))
+      .merge(bars)
       .on('mouseover', function(selectedBar) {
         d3.selectAll('.bar')
           .style('opacity', 0.25)
@@ -110,32 +132,32 @@ class BarPlot {
         .delay((d, i) => i * 100);
 
     // add labels to each bar
-    this.svg.append("g")
-      .attr("fill", "white")
-      .attr("text-anchor", "end")
-      .selectAll("text")
-      .data(data)
-      .join("text")
-        .attr("x", d => this.xScale(d.value) - 4)
-        .attr("y", d => this.yScale(d.name) + this.yScale.bandwidth() / 2)
-        .attr("dy", "0.35em")
-        .text(d => {
-          switch (d.value) {
-            case 1:
-              return 'Novice';
-            case 2:
-              return 'Familiar';
-            case 3:
-              return 'Intermediate';
-            case 4:
-              return 'Experienced';
-            case 5:
-              return 'Expert';
-            case 0:
-            default:
-              return '';
-          }
-        });
+    // this.svg.append('g')
+    //   .attr('fill', 'white')
+    //   .attr('text-anchor', 'end')
+    //   .selectAll('text')
+    //   .data(data)
+    //   .join('text')
+    //   .attr('x', d => this.xScale(d.value) - 4)
+    //   .attr('y', d => this.yScale(d.name) + this.yScale.bandwidth() / 2)
+    //   .attr('dy', '0.35em')
+    //   .text(d => {
+    //     switch (d.value) {
+    //       case 1:
+    //         return 'Novice';
+    //       case 2:
+    //         return 'Familiar';
+    //       case 3:
+    //         return 'Intermediate';
+    //       case 4:
+    //         return 'Experienced';
+    //       case 5:
+    //         return 'Expert';
+    //       case 0:
+    //       default:
+    //         return '';
+    //     }
+    //   });
 
     bars.exit().remove();
   }

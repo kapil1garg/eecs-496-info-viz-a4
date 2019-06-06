@@ -133,4 +133,161 @@ $(function() {
   const bar4 = new BarPlot('#bar4', data3);
   bar4.setupPlot();
   bar4.draw(data4);
+
+
+  // testing data updates
+  setTimeout(() => {
+    const randomData = [{
+      "name": "d3.js",
+      "value": Math.floor(Math.random() * 6),
+    },
+      {
+        "name": "Vega-Lite",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "React",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "Angular",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "Vue",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "Blaze",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "Node.js",
+        "value": Math.floor(Math.random() * 6),
+      }];
+
+    bar1.draw(randomData)
+  }, 5000)
+
+  setTimeout(() => {
+    const randomData = [{
+      "name": "d3.js",
+      "value": Math.floor(Math.random() * 6),
+    },
+      {
+        "name": "Vega-Lite",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "React",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "Angular",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "Vue",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "Blaze",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "Node.js",
+        "value": Math.floor(Math.random() * 6),
+      }];
+
+    bar2.draw(randomData)
+  }, 5000)
+
+  setTimeout(() => {
+    const randomData = [{
+      "name": "d3.js",
+      "value": Math.floor(Math.random() * 6),
+    },
+      {
+        "name": "Vega-Lite",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "React",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "Angular",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "Vue",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "Blaze",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "Node.js",
+        "value": Math.floor(Math.random() * 6),
+      }];
+
+    bar4.draw(randomData)
+  }, 5000)
+
+  setTimeout(() => {
+    const randomData = [{
+      "name": "d3.js",
+      "value": Math.floor(Math.random() * 6),
+    },
+      {
+        "name": "Vega-Lite",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "React",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "Angular",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "Vue",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "Blaze",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "Node.js",
+        "value": Math.floor(Math.random() * 6),
+      }];
+
+    bar3.draw(randomData)
+  }, 5000)
+
+  setTimeout(() => {
+    const randomData = [{
+      "name": "d3.js",
+      "value": Math.floor(Math.random() * 6),
+    },
+      {
+        "name": "Vega-Lite",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "React",
+        "value": Math.floor(Math.random() * 6),
+      },
+      {
+        "name": "Node.js",
+        "value": Math.floor(Math.random() * 6),
+      }];
+
+    bar2.resetPlot(randomData)
+    bar2.setupPlot()
+    bar2.draw(randomData)
+  }, 7000)
 });
