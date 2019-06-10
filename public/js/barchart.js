@@ -1,9 +1,10 @@
 class BarPlot {
-  constructor(targetDiv, data) {
+  constructor(targetDiv, data, renderer) {
     // setup data needed from caller
     this.targetEle = targetDiv;
     this.data = data.skills;
     this.isAvailable = data.isAvailable;
+    this.renderer = renderer;
 
     d3.select(this.targetEle).selectAll("*").remove();
 
@@ -122,7 +123,12 @@ class BarPlot {
       }).on('mouseout', () => {
         // TODO: use parameter in data about availability to reset opacity THIS BREAKS
         d3.selectAll('.bar')
-          .style('opacity', () => self.isAvailable ? 1.0 : 0.25);
+          .style('opacity', (d) => {
+            return self.renderer.filterVals.frameworks.has(d.name) ? 1.0 : 0.25;
+
+            // console.log(self.renderer, d);
+            // return self.isAvailable ? 1.0 : 0.25
+          });
       })
       .transition()
         .duration(800)

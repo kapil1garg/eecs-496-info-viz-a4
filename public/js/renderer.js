@@ -79,7 +79,7 @@ class Renderer {
       $helperDiv.append(helperTile);
 
       // initialize plot
-      this.people[key].plot = new BarPlot(`#${ plotId }`, filteredData[key]);
+      this.people[key].plot = new BarPlot(`#${ plotId }`, filteredData[key], this);
       this.people[key].plot.setupPlot();
       this.people[key].plot.draw(filteredData[key]);
 
