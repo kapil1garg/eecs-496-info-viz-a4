@@ -89,13 +89,6 @@ class BarPlot {
       .attr('class', 'axis')
       .call(xAxis);
 
-    // this.svg.append('text') // x-axis label
-    //   .attr('class','label')
-    //   .attr('x', w + 10)
-    //   .attr('y', h + margin.top)
-    //   .style('text-anchor','end')
-    //   .text('Knowledge (0: none; 5: expert)');
-
     // add y-axis
     this.svg.append('g')
       .attr('class', 'axis')
@@ -121,48 +114,27 @@ class BarPlot {
           .filter(d => d.name === selectedBar.name)
           .style('opacity', 1);
       }).on('mouseout', () => {
-        // TODO: use parameter in data about availability to reset opacity THIS BREAKS
         d3.selectAll('.bar')
           .style('opacity', (d) => {
-            return self.renderer.filterVals.frameworks.has(d.name) ? 1.0 : 0.25;
+            if (self.renderer.filterVals.frameworks.size === 0) {
+              return 1.0
+            }
 
-            // console.log(self.renderer, d);
-            // return self.isAvailable ? 1.0 : 0.25
+            return self.renderer.filterVals.frameworks.has(d.name) ? 1.0 : 0.25
           });
       })
       .transition()
         .duration(800)
         .attr('width', d => self.xScale(d.value))
         .delay((d, i) => i * 100)
-      .style('opacity', () => data.isAvailable ? 1.0 : 0.25);
+      .style('opacity', (d) => {
+        if (self.renderer.filterVals.frameworks.size === 0) {
+          return 1.0
+        }
 
-    // add labels to each bar
-    // this.svg.append('g')
-    //   .attr('fill', 'white')
-    //   .attr('text-anchor', 'end')
-    //   .selectAll('text')
-    //   .data(data)
-    //   .join('text')
-    //   .attr('x', d => this.xScale(d.value) - 4)
-    //   .attr('y', d => this.yScale(d.name) + this.yScale.bandwidth() / 2)
-    //   .attr('dy', '0.35em')
-    //   .text(d => {
-    //     switch (d.value) {
-    //       case 1:
-    //         return 'Novice';
-    //       case 2:
-    //         return 'Familiar';
-    //       case 3:
-    //         return 'Intermediate';
-    //       case 4:
-    //         return 'Experienced';
-    //       case 5:
-    //         return 'Expert';
-    //       case 0:
-    //       default:
-    //         return '';
-    //     }
-    //   });
+        return self.renderer.filterVals.frameworks.has(d.name) ? 1.0 : 0.25
+      });
+
 
     bars.exit().remove();
   }
