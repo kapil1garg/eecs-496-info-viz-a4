@@ -91,6 +91,9 @@ class Renderer {
     });
 
     $helperDiv.show();
+
+    // run an update to make sure sorting is still there
+    this.updateVis();
   }
 
   sortPeople() {
