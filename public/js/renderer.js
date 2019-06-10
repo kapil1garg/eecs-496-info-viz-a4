@@ -158,17 +158,23 @@ class Renderer {
       this.filterVals.subtopic = e.target.value;
 
       // populate checkbox values for frameworks
-      function makeCheckBox(value) {
+      function makeCheckBox(value, colorFn) {
+        let currColor = colorFn(value);
+
         return `<div class="form-check">
         <input class="form-check-input" type="checkbox" value="${ value }" id="${ value }">
-          <label class="form-check-label" for="${ value }"> ${ value } </label>
+          <label class="form-check-label" for="${ value }" style="color: ${ currColor };"> ${ value } </label>
         </div>`
       }
 
       $('#filter-frameworks').empty();
       let currFrameworkVals = this.defaultFilterVals.frameworks[e.target.value];
+      let frameworkColorFn = d3.scaleOrdinal()
+        .domain(currFrameworkVals)
+        .range(d3.schemeCategory10);
+
       currFrameworkVals.forEach(framework => {
-        $('#filter-frameworks').append(makeCheckBox(framework));
+        $('#filter-frameworks').append(makeCheckBox(framework, frameworkColorFn));
       });
 
       // set framework filters

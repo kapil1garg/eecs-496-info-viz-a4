@@ -1,6 +1,6 @@
 body, html{
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.95rem;
+    font-size: 1.0rem;
     margin:0;
     padding:0;
     width: 100%;
@@ -69,13 +69,13 @@ h1.filters-header {
 }
 
 h1.helper-header {
-    background: #898C3A;
+    background: #4EBFAB;
     text-align: center;
     color: white;
 }
 
 div.filters {
-    background: #4EBFAB;
+    background: navajowhite;
 }
 
 .form-check {
