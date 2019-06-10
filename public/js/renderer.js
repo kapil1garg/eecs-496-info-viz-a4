@@ -15,7 +15,7 @@ class Renderer {
         'Visualization Frameworks': ['D3.js', 'Vega Lite', 'ThreeJS', 'React Vis'],
         'Model-View-Controller (MVC) Frameworks': ['jQuery', 'AngularJS', 'EmberJS', 'MeteorJS', 'ReactJS'],
         'Data Analysis and Modeling': ['Pandas', 'Numpy', 'Tensorflow', 'Scipy'],
-        'Backend Frameworks': ['Flask', 'Django', 'Tornado ']
+        'Backend Frameworks': ['Flask', 'Django', 'Tornado']
       }
     };
 
@@ -24,7 +24,8 @@ class Renderer {
       domain: '',
       subtopic: '',
       frameworks: new Set(),
-      deadline: undefined
+      deadline: undefined,
+      sortType: undefined
     };
 
     // initialize filters
@@ -92,9 +93,57 @@ class Renderer {
     $helperDiv.show();
   }
 
+  sortPeople() {
+    // compute score for each person
+    let peopleScores = [];
+    Object.keys(this.people).forEach(key => {
+      let currPerson = this.people[key];
+      let relevantExpertise = currPerson.expertise[this.filterVals.domain][this.filterVals.subtopic];
+
+      // score based on average or filter
+      let score = 1;
+
+      if ((this.filterVals.sortType === 'overall') ||
+          (this.filterVals.sortType === 'filtered' && this.filterVals.frameworks.size === 0)) {
+        let sum = Object.values(relevantExpertise).reduce((a, b) => a + b);
+        score = sum / Object.keys(relevantExpertise).length;
+      } else if (this.filterVals.sortType === 'filtered') {
+        let sum = 0;
+
+        Object.keys(relevantExpertise).forEach(skill => {
+          if (this.filterVals.frameworks.has(skill)) {
+            sum += relevantExpertise[skill];
+          }
+        });
+        score = sum / this.filterVals.frameworks.size;
+      } else { // default sort
+        score = 1;
+      }
+
+      // if person is unavailable, make their score a -1 (0 is still available)
+      if ((this.filterVals.deadline !== undefined) &&
+        !(currPerson.availability.has(this.filterVals.deadline))) {
+        score = -1;
+      }
+
+      peopleScores.push({
+        name: key,
+        score: score
+      })
+    });
+
+    // sort and return
+    return peopleScores.sort((a, b) => {
+      return b.score - a.score;
+    })
+  }
+
   updateVis() {
     // get filtered data to use for plotting
     let filteredData = this.getFilteredData(this.data);
+
+    // get list of sorted people
+    let sortedPeople = this.sortPeople();
 
     // append data from each helper
     Object.keys(this.people).forEach(key => {
@@ -110,6 +159,23 @@ class Renderer {
         $(`#${ key.replace(/\s/g, '') }-div`).animate({opacity: 0.25}, 800);
       }
     });
+
+    // reorder divs by score
+    let lowestHelperName = sortedPeople[sortedPeople.length - 1].name;
+    let lastDivId = `#${ lowestHelperName.replace(/\s/g, '') }-div`;
+
+
+    for (let i = sortedPeople.length - 2; i >= 0; i--) {
+      // get current helper and current div id
+      let currHelperName = sortedPeople[i].name;
+      let currDivId = `#${ currHelperName.replace(/\s/g, '') }-div`;
+
+      // insert current div before previous div
+      $(currDivId).insertBefore(lastDivId);
+
+      // set up last div
+      lastDivId = currDivId;
+    }
   }
 
   initFilters() {
@@ -208,6 +274,12 @@ class Renderer {
           self.filterVals.frameworks.delete(filterValue);
         }
 
+        self.updateVis();
+      });
+
+      // setup handler for sorting
+      $('#sorting').on('change', e => {
+        this.filterVals.sortType = e.target.value;
         self.updateVis();
       });
 
