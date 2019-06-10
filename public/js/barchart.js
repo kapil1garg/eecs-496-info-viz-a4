@@ -3,7 +3,6 @@ class BarPlot {
     // setup data needed from caller
     this.targetEle = targetDiv;
     this.data = data.skills;
-    this.isAvailable = data.isAvailable;
     this.renderer = renderer;
 
     d3.select(this.targetEle).selectAll("*").remove();

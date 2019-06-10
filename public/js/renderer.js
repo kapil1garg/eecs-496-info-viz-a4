@@ -58,11 +58,14 @@ class Renderer {
     // append data from each helper
     let index = 0;
     Object.keys(this.people).forEach(key => {
+      // curr div id
+      let divId = `${ key.replace(/\s/g, '') }-div`;
+
       // curr plot key
       let plotId = key.replace(/\s/g, '');
 
       // create tile
-      let helperTile = `<div class="row standard-padding">
+      let helperTile = `<div class="row standard-padding" id="${ divId }">
                     <div class="col-2 cn">
                         <div class="profile">
                             <img src="${ this.people[key].image }" alt="avatar" class="circle-avatar">
@@ -95,8 +98,17 @@ class Renderer {
 
     // append data from each helper
     Object.keys(this.people).forEach(key => {
+      let currFilteredData = filteredData[key];
+
       // update plot with filtered data
-      this.people[key].plot.draw(filteredData[key]);
+      this.people[key].plot.draw(currFilteredData);
+
+      // if unavailable, fade out whole div
+      if (currFilteredData.isAvailable) {
+        $(`#${ key.replace(/\s/g, '') }-div`).animate({opacity: 1}, 800);
+      } else {
+        $(`#${ key.replace(/\s/g, '') }-div`).animate({opacity: 0.25}, 800);
+      }
     });
   }
 
@@ -224,17 +236,8 @@ class Renderer {
         })
       });
 
-      // determine availability by skills
-      let isAvailable = true;
-      if (this.filterVals.frameworks.size > 0) {
-        this.filterVals.frameworks.forEach(framework => {
-          if (relevantExpertise[framework] === 0) {
-            isAvailable = false;
-          }
-        });
-      }
-
       // determine availability by deadline
+      let isAvailable = true;
       if ((this.filterVals.deadline !== undefined) &&
           !(this.people[key].availability.has(this.filterVals.deadline))) {
         isAvailable = false;
