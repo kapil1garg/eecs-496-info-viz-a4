@@ -1,6 +1,6 @@
 # Visualizing Expertise in Organizations | Kapil Garg
 Research project for visualizing and helping users find experts in an organization for Northwestern's EECS 496: Interactive Information Visualization class.
-See a live demo [here]().
+See a live demo [here](https://eecs496-expertise-visualizer.herokuapp.com/).
 
 # Setup
 ## Webapp
