@@ -24,7 +24,7 @@
   "homepage": "https://github.com/kapil1garg/eecs-496-info-viz-a4#readme",
   "dependencies": {
     "d3": "^5.9.2",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "jquery": "^3.4.1",
     "serve-favicon": "^2.5.0"
   }
